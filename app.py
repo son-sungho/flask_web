@@ -21,7 +21,7 @@ def about():
 
 @app.route('/articles')
 def article():
-    
+    print("Success")
     # return "TEST"
     articles = Articles()
     print(len(articles))
