@@ -31,6 +31,15 @@ def article():
 def show_image():
     return render_template('image.html')
 
+@app.route('/article/<int:id>')
+def articleinfo(id):
+    print(id)
+    articles = Articles()[-1]
+    print(articles)
+    return render_template('article.html')
+    return "Success"
+
+
 if __name__ =='__main__':
     # app.run(host='0.0.0.0', port='8080')
     app.run()
