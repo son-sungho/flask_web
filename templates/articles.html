@@ -1,30 +1,78 @@
 
 {% extends "layouts.html" %}
 {% block body %}
-<table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">id</th>
-        <th scope="col">title</th>
-        <th scope="col">description</th>
-        <th scope="col">author</th>
-        <th scope="col">DATE</th>
-      </tr>
-    </thead>
-    <tbody>
+    <div class="jumbotron text-center">
+    <h1 class="display-4">ARTICLES PAGE</h1>
+    <p class="lead">This Application is build using by python and Flask Framework</p>
+    <hr class="my-4">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">title</th>
+            <th scope="col">description</th>
+            <th scope="col">author</th>
+            <th scope="col">DATE</th>
+            <th scope="col">EDIT</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+          <tr>
+            <th scope="row">{{ article['id'] }}</th>
+            <td>{{ article['title'] }}</td>
+            <td>{{ article['body'] }}</td>
+            <td>{{ article['author'] }}</td>
+            <td>{{ article['create_date'] }}</td>
+            <td><button type="button" class="btn btn-danger">Edit</button></td>
+          </tr>
+           {% endfor %}
+        </tbody>
+      </table>
       
-    <tbody>
-      {%  for articles in articles  %}
-      <tr>
-        <th scope="row">{{articles['id']}}</th>
-        <td>{{articles['title']}}</td>
-        <td>{{articles['body']}}</td>
-        <td>{{articles['author']}}</td>
-        <td>{{articles['create_date']}}</td>
-      </tr>
-      {% endfor %}
-  
-    </tbody>
-  </table>
-
-  {%  endblock %}
+      <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+            DataTable Example
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>TITLE</th>
+                            <th>description</th>
+                            <th>author</th>
+                            <th>date</th>
+                            <th>EDIT</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                      tr>
+                      <th>ID</th>
+                      <th>TITLE</th>
+                      <th>description</th>
+                      <th>author</th>
+                      <th>date</th>
+                      <th>EDIT</th>
+                  </tr>
+                    </tfoot>
+                    <tbody>
+                      <tr>
+                          <td>Tiger Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>2011/04/25</td>
+                          <td>$320,800</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                    </div>
+                    </div>
+                    </div>
+​
+    <a class="btn btn-warning btn-lg" href="#" role="button">Learn more</a>
+  </div>
+{% endblock %}
