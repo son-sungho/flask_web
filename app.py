@@ -42,9 +42,25 @@ def about():
 
 
 
-@app.route('login',methods =['GET','POST'])
+@app.route('/login',methods =['GET','POST'])
 def login():
     if request.method == 'POST':
+        id = request.form.get('email')
+        pw = request.form.get('password')
+        # print([id, pw])
+
+        sql='SELECT * FROM users WHERE email = %s'
+        cursor = db.cursor()
+        cursor.execute(sql, [id])
+        users = cursor.fetchone()
+        print(users[4])
+
+        # if users()
+
+        if pbkdf2_sha256.verify(pw,users[4] ) :
+            return redirect(url_for('home'))
+        else:
+            return 'LOGIN'
         return "LOGED PAGE"
 
     else:
